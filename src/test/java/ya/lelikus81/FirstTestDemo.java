@@ -1,18 +1,24 @@
 package ya.lelikus81;
 
+import jdk.jfr.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class FirstTestDemo {
 
     @Test
     void openSite(){
-        open("https://test.cityline.io");
+
+        open("https://demoqa.com/text-box");
+
     }
+
+
+
 
 //    @BeforeEach
 //    void openYandex(){

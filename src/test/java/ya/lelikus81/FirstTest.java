@@ -16,7 +16,7 @@ public class FirstTest {
 
     @BeforeEach
     void openYandex(){
-        // open("yandex.ru")
+
         System.out.print("open yandex.ru");
     }
 

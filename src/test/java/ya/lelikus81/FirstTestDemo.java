@@ -13,7 +13,7 @@ public class FirstTestDemo {
     @Test
     void openSite(){
 
-        open("https://demoqa.com/text-box");
+        open("https://test.cityline.io/");
 
     }
 

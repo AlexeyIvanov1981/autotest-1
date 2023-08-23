@@ -11,8 +11,9 @@ import static com.codeborne.selenide.Selenide.open;
 public class PracticeFotmTest {
     @BeforeAll
     static void browserSize(){
+        Configuration.startMaximized = true;
         Configuration.browser = "FIREFOX";
-        Configuration.browserSize = "1900x1240";
+//        Configuration.browserSize = "1900x1240";
     }
 
     @Test

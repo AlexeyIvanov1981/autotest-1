@@ -5,30 +5,31 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.startMaximized = true;
+        Configuration.browser = "FIREFOX";
     }
 
     @Test
     void textBoxTest() {
 
-        open("https://demoqa.com/text-box");
-        $("#userName").setValue("some name");
-        $("#userEmail").setValue("123@123.io");
-        $("#currentAddress").setValue("some address");
-        $("#permanentAddress").setValue("other address");
+        open("https://tenetx.io/login");
+//        $("#userName").setValue("some name");
+        $("[name = email]").setValue("alexey.ivanov.pro.1981@gmail.com");
+        $("[name = password]").setValue("Test123456!");
+//        $("#permanentAddress").setValue("other address");
 
-        $("#submit").click();
+//        $("#rc-anchor-container").click();
+        $("[data-testid = submit-button]").click();
 
-        $("#output #name").shouldHave(text("some name"));
-        $("#output #email").shouldHave(text("123@123.io"));
-        $("#output #currentAddress").shouldHave(text("some address"));
-        $("#output #permanentAddress").shouldHave(text("other address"));
+//        $("#output #name").shouldHave(text("some name"));
+//        $("#output #email").shouldHave(text("123@123.io"));
+//        $("#output #currentAddress").shouldHave(text("some address"));
+//        $("#output #permanentAddress").shouldHave(text("other address"));
     }
 }

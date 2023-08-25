@@ -1,4 +1,4 @@
-package ya.lelikus81;
+package ya.lelikus81.tests;
 
 import org.junit.jupiter.api.*;
 

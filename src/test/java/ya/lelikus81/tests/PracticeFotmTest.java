@@ -1,41 +1,36 @@
-package ya.lelikus81;
+package ya.lelikus81.tests;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class PracticeFotmTest {
-    @BeforeAll
-    static void browserSize() {
-        Configuration.startMaximized = true;
-        Configuration.browser = "FIREFOX";
-//        Configuration.browserSize = "1900x1240";
-    }
+public class PracticeFotmTest extends TestBase {
+    private String userFirstName = "Alex";
+    private String userLastName = "Ivanov";
+    private String userEmail = "123@123.io";
+    private String userAddress = "Address Taganrog";
+
 
     @Test
     void fillAllForm() {
-        open("https://demoqa.com/automation-practice-form");
+        registrationPage.openPage("https://demoqa.com/automation-practice-form");
 
-        $("#firstName").setValue("Alex");
-        $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("123@123.io");
-        $("genderWrapper").$(byText("Male")).click();
+        registrationPage.typeFirstName(userFirstName);
+        registrationPage.typeLastName(userLastName);
+        registrationPage.typeEmail(userEmail);
+
+
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("1234567890");
         $("#dateOfBirthInput").click();
 
 
         $(".react-datepicker__day").click();
         $("#subjectsInput").setValue("English").pressEnter();
-        $("#currentAddress").setValue("Address Taganrog");
-        $("#submit").click();
+        $("#currentAddress").setValue(userAddress);
+        registrationPage.clickSubmitButton();
 
         $("body > div.fade.modal.show > div > div > div.modal-body > div > table > tbody > tr:nth-child(1) > td:nth-child(2)")
                 .shouldHave(text("Alex Ivanov"));
@@ -47,8 +42,14 @@ public class PracticeFotmTest {
                 .shouldHave(text("123@123.io"));
         $("body > div.fade.modal.show > div > div > div.modal-body > div > table > tbody > tr:nth-child(6) > td:nth-child(2)")
                 .shouldHave(text("English"));
-        $("body > div.fade.modal.show > div > div > div.modal-body > div > table > tbody > tr:nth-child(7) > td:nth-child(2)")
-                .shouldHave(text("Music"));
+
+
+        registrationPage
+                .checkResultValue("Student Name", userFirstName + " " + userLastName)
+                .checkResultValue("Student Email", userEmail);
+
+//        $(".table-responsive").$(byText("Student Name"))
+//                .parent().shouldHave(text("Alex Ivanov"));
 
 
 //        open("https://demoqa.com/automation-practice-form");

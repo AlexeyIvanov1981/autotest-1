@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class PracticeFotmTest extends TestBase {
+public class PracticeFormTest extends TestBase {
     private String userFirstName = "Alex";
     private String userLastName = "Ivanov";
     private String userEmail = "123@123.io";
